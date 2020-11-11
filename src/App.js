@@ -1,16 +1,30 @@
 import React, { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import ResultComponent from "./components/ResultComponent";
 import KeypadComponent from "./components/KeypadComponent";
 
 function App() {
   const [result, setResult] = useState(" ");
 
+  const onClick = button => {
+    if(button === "=") {
+      calculate()
+    } else if(button === "C") {
+      reset()
+    } else if(button === "CE") {
+      backspace()
+    } else {
+      setResult({
+        result: result + button
+      })
+    }
+  }
+
   const calculate = () => {
     try {
-      setResult({
-        result: (eval(result) || "") + "",
-      });
+      setResult(
+        [(eval(result) || "") + "" ] 
+      );
     } catch (e) {
       setResult({
         result: "error",
@@ -30,7 +44,7 @@ function App() {
     });
   };
 
-  
+
 
   return (
     <div className="Calculator">
