@@ -14,34 +14,34 @@ function App() {
     } else if(button === "CE") {
       backspace()
     } else {
-      setResult({
-        result: result + button
-      })
+      setResult(
+        result + button
+      )
     }
   }
 
   const calculate = () => {
     try {
       setResult(
-        [(eval(result) || "") + "" ] 
+        [(eval(result) || " ") + " " ] 
       );
     } catch (e) {
-      setResult({
-        result: "error",
-      });
+      setResult(
+         "error"
+      );
     }
   };
 
   const reset = () => {
-    setResult({
-      result: "",
-    });
+    setResult(
+      " ",
+    );
   };
 
   const backspace = () => {
-    setResult({
-      result: result.slice(0, -1),
-    });
+    setResult(
+      result.slice(0, -1),
+    );
   };
 
 
